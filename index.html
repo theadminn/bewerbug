@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ömer Celebi – Lebenslauf</title>
+    
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--border-light);
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* --- Main Layout --- */
+        main {
+            padding: 40px 0 80px;
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+        }
+
+        /* --- Sidebar (Profile) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #e2e8f0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .profile-subtitle {
+            font-size: 0.938rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .contact-list {
+            list-style: none;
+            text-align: left;
+            border-top: 1px solid var(--border-light);
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Content Area --- */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 8px;
+        }
+
+        /* Timeline Items */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background-color: var(--border-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.813rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .timeline-org {
+            font-size: 0.875rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Grid Layouts */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: var(--border-light);
+            color: var(--text-secondary);
+            font-size: 0.813rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .soft-skill-card {
+            background: var(--border-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .soft-skill-title {
+            font-size: 0.938rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .soft-skill-desc {
+            font-size: 0.813rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 8px;
+        }
+
+        .lang-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .lang-level {
+            color: var(--text-secondary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background: #ffffff;
+        }
+
+        /* --- Toast Notification --- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--text-primary);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 840px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- PRINT STYLES (PDF-Export) --- */
+        @media print {
+            header, footer, .nav-actions, .toast {
+                display: none !important;
+            }
+
+            body {
+                background: #ffffff;
+                color: #000000;
+                font-size: 11pt;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            main {
+                padding: 0;
+            }
+
+            .layout-grid {
+                display: block;
+            }
+
+            .card, .profile-card {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin-bottom: 24pt;
+                background: transparent !important;
+            }
+
+            .profile-card {
+                text-align: left;
+                display: flex;
+                gap: 24px;
+                align-items: center;
+                border-bottom: 2px solid #000000 !important;
+                padding-bottom: 18pt !important;
+            }
+
+            .avatar-container {
+                margin: 0;
+                width: 100px;
+                height: 100px;
+            }
+
+            .contact-list {
+                border: none;
+                padding-top: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .timeline::before {
+                background-color: #ccc;
+            }
+
+            .timeline-dot {
+                border-color: #000;
+            }
+
+            .timeline-org {
+                color: #333;
+            }
+
+            .tag, .soft-skill-card {
+                border: 1px solid #ccc;
+                background: none;
+                color: #000;
+            }
+
+            @page {
+                margin: 1.5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">Ömer Celebi</a>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="copyContactInfo()">
+                    Kontakt kopieren
+                </button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    Als PDF drucken
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="layout-grid">
+            
+            <!-- Sidebar / Profil -->
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <img src="https://lh3.googleusercontent.com/d/1X3C6a5f-N2yX5q8Q0zW7-x9A6_L8N2M" alt="Ömer Celebi Profilbild">
+                    </div>
+                    <h1 class="profile-name">Ömer Celebi</h1>
+                    <p class="profile-subtitle">Schüler an der HAK / HAS Sacré Cœur</p>
+                    
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <strong>Adresse</strong>
+                            <span>Lechnerstraße 2, 1030 Wien</span>
+                        </li>
+                        <li class="contact-item">
+                            <strong>E-Mail</strong>
+                            <a href="mailto:omer.celebi.business@gmail.com">omer.celebi.business@gmail.com</a>
+                        </li>
+                        <li class="contact-item">
+                            <strong>Telefon</strong>
+                            <a href="tel:+43069917072638">+43 0699 17072638</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="content">
+
+                <!-- Schulbildung -->
+                <section class="card">
+                    <h2 class="section-title">Schulbildung</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="timeline-role">HAK / HAS Sacré Cœur</span>
+                                <span class="timeline-date">Seit 2024 (Abschluss 2029)</span>
+                            </div>
+                            <div class="timeline-org">Fasangasse 4, 1030 Wien</div>
+                            <p class="timeline-desc">Aktuell in der 11. Klasse. Wahlfach Steuern und Recht.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="timeline-role">Mittelschule Hörnesgasse</span>
+                                <span class="timeline-date">2020 – 2024</span>
+                            </div>
+                            <div class="timeline-org">Hörnesgasse 12, 1030 Wien</div>
+                            <p class="timeline-desc">AHS-Niveau in Englisch und Deutsch, Spezialisierung EDV-Klasse.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="timeline-role">Volksschule Dietrichgasse</span>
+                                <span class="timeline-date">2015 – 2020</span>
+                            </div>
+                            <div class="timeline-org">Dietrichgasse 36, 1030 Wien</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Praktische Erfahrung -->
+                <section class="card">
+                    <h2 class="section-title">Praktische Erfahrung</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="timeline-role">Ferialpraktikum Büroassistenz</span>
+                                <span class="timeline-date">Ferialpraxis</span>
+                            </div>
+                            <div class="timeline-org">Zelal Bau GmbH</div>
+                            <p class="timeline-desc">Unterstützung bei administrativen Bürotätigkeiten, Ablage und Dokumentenverwaltung.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <span class="timeline-role">Praktische Tage / Schnupperlehre</span>
+                                <span class="timeline-date">7 Tage</span>
+                            </div>
+                            <div class="timeline-org">Deniz Bank AG</div>
+                            <p class="timeline-desc">Einblick in den Arbeitsalltag und die Abläufe der IT-Abteilung.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Teamfähigkeiten & Persönliche Stärken -->
+                <section class="card">
+                    <h2 class="section-title">Teamfähigkeit & Soft Skills</h2>
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-title">Teamfähigkeit & Kooperation</div>
+                            <div class="soft-skill-desc">Zielorientiertes Arbeiten in Gruppen, gegenseitige Unterstützung und verlässliche Absprachen.</div>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-title">Kommunikationsstärke</div>
+                            <div class="soft-skill-desc">Klarer Austausch in Gruppenarbeiten und sicheres Ausdrücken komplexer Sachverhalte.</div>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-title">Zuverlässigkeit</div>
+                            <div class="soft-skill-desc">Pünktliche Abgabe von Aufgaben und gewissenhafte Durchführung aller Zuweisungen.</div>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-title">Problemlösungskompetenz</div>
+                            <div class="soft-skill-desc">Strukturierte Herangehensweise bei neuen Herausforderungen im Schul- und Büroalltag.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kenntnisse, Sprachen & Interessen -->
+                <section class="card">
+                    <div class="two-col-grid">
+                        <div class="skill-group">
+                            <h2 class="section-title">Kenntnisse</h2>
+                            <div class="tag-list" style="margin-bottom: 24px;">
+                                <span class="tag">Microsoft Excel</span>
+                                <span class="tag">Microsoft Word</span>
+                                <span class="tag">PowerPoint</span>
+                                <span class="tag">Canva</span>
+                            </div>
+
+                            <h4 style="margin-top: 16px;">Interessen</h4>
+                            <div class="tag-list">
+                                <span class="tag">Lesen</span>
+                                <span class="tag">Puzzles</span>
+                                <span class="tag">Lego</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <h2 class="section-title">Sprachen</h2>
+                            <div class="lang-list">
+                                <div class="lang-item">
+                                    <span class="lang-name">Türkisch</span>
+                                    <span class="lang-level">Muttersprache</span>
+                                </div>
+                                <div class="lang-item">
+                                    <span class="lang-name">Deutsch</span>
+                                    <span class="lang-level">Fließend</span>
+                                </div>
+                                <div class="lang-item">
+                                    <span class="lang-name">Englisch</span>
+                                    <span class="lang-level">Fließend</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Ömer Celebi – Online Lebenslauf</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Kontaktdaten in Zwischenablage kopiert.</div>
+
+    <script>
+        function copyContactInfo() {
+            const textToCopy = "Ömer Celebi\nE-Mail: omer.celebi.business@gmail.com\nTel: +43 0699 17072638";
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+</html>
